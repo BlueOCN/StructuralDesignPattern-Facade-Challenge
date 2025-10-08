@@ -1,0 +1,208 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 999,
+    "backwardDepth": 0,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": false,
+    "hideInterfaceCalls": false, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "blueocn.Car",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_15833472 { 
+   	label=blueocn
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Accelerator15833472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Accelerator</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ lift()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ press()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Car15833472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Car</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CarFacade15833472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CarFacade</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   accelerator: Accelerator [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   clutch: Clutch [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   gearStick: GearStick [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   handbrake: Handbrake [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ignition: Ignition [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- changeGear(gear: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ drive()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Clutch15833472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Clutch</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ lift()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ press()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GearStick15833472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GearStick</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   gear: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ changeGear(gear: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Handbrake15833472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Handbrake</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   isUp: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ liftUp()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ pushDown()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Ignition15833472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Ignition</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   isOn: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ turnOff()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ turnOn()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Car15833472 -> CarFacade15833472[label="main() -> drive()"];
+CarFacade15833472 -> Accelerator15833472[label="accelerator
+[0..1]"];
+CarFacade15833472 -> Clutch15833472[label="clutch
+[0..1]"];
+CarFacade15833472 -> GearStick15833472[label="gearStick
+[0..1]"];
+CarFacade15833472 -> Handbrake15833472[label="handbrake
+[0..1]"];
+CarFacade15833472 -> Ignition15833472[label="ignition
+[0..1]"];
+    
+}
+@enduml
